@@ -4,6 +4,7 @@ import { useSidebar } from '@/store/use-sidebar'
 import React, { useEffect, useState } from 'react'
 import { ToggleSkeleton } from './Toggle'
 import { RecommendedSkeleton } from './Recommended'
+import { FollowerSkeleton } from './Following'
 
 const Wrapper = ({children}:{children:React.ReactNode}) => {
     // 3:56:00 listen carefully to the whole module
@@ -16,6 +17,7 @@ const Wrapper = ({children}:{children:React.ReactNode}) => {
         return(
             <aside className='fixed left-0 flex flex-col h-full bg-background w-[70px] lg:w-60 border-r border-[#2D2E35] z-50 transition-all ease-in-out duration-200'>
                 <ToggleSkeleton/>
+                <FollowerSkeleton/>
                 <RecommendedSkeleton/>
             </aside>
         )

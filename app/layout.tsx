@@ -4,6 +4,7 @@ import { Inter } from 'next/font/google'
 import './globals.css'
 import { dark } from '@clerk/themes'
 import { ThemeProvider } from '@/components/theme-provider'
+import { Toaster } from 'sonner'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -25,7 +26,8 @@ export default function RootLayout({
               attribute="class"
               forcedTheme='dark'
               storageKey='kokostream-theme'
-            >
+              >
+            <Toaster theme='light'/>
             {children}
           </ThemeProvider>
         </body>
