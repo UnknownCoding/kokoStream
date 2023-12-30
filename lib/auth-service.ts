@@ -16,3 +16,22 @@ export const getSelf = async () => {
     }
     return user
 }
+
+export const getSelfByUsername = async (username:string) => {
+    const self = await currentUser()
+    if(!self||!self.username){
+        throw new Error("Unauthorized Access")
+    }
+    const user = await db.users.findUnique({
+        where:{
+            username:username
+        }
+    })
+    if(!user){
+        throw new Error("user doesnt exist")
+    }
+    if(self.username !== user.username){
+        throw new Error("username mismatch")
+    }
+    return user
+}
