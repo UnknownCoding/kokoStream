@@ -51,8 +51,8 @@ export const blockUser = async (id:string) => {
     }
     const block = await db.block.create({
         data:{
-            blockedId:self.id,
-            blockerId:otherUser.id
+            blockerId:self.id,
+            blockedId:otherUser.id
         },
         include:{
             blocked:true
@@ -80,6 +80,7 @@ export const unblockUser = async (id:string) => {
             }
         }
     })
+    console.log(existingBlock)
     if(!existingBlock){
         throw new Error("user is already unblocked")
     }
