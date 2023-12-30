@@ -3,6 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  previewFeatures = ["fullTextSearch","fullTextIndex"]
 }
 
 datasource db {
@@ -23,6 +24,7 @@ model users{
   followedBy follow[] @relation("FollowedBy")
   blocking block[] @relation("Blocking")
   blockedBy block[] @relation("BlockedBy")
+  streams stream?
 }
 
 model follow{
@@ -48,3 +50,31 @@ model block{
   @@index([blockedId])
   @@index([blockerId])
 }
+
+
+model stream{
+  id String @unique @default(uuid())
+  name String @db.Text
+  thumnailUrl String? @db.Text 
+  // ingress streaming software
+  ingressId String? @unique
+  serverUrl String? @db.Text
+  streamKet String? @db.Text
+
+  isLive Boolean @default(false)
+  isChatEnabled Boolean @default(true)
+  isChatDelayed Boolean @default(false)
+  isChatFollowersOnly Boolean @default(false)
+
+  userId String @unique
+  user users @relation(fields: [userId],references: [id],onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([ingressId])
+  @@fulltext([name])
+
+}
+

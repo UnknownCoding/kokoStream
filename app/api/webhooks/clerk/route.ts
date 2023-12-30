@@ -41,6 +41,11 @@ export async function POST(req:Request){
                     externalUserId:payload.data.id,
                     username:payload.data.username,
                     imageUrl:payload.data.image_url,
+                    streams:{
+                        create:{
+                            name:`${payload.data.username}'s stream`
+                        }
+                    }
                 }
             })
         }else if(eventType === "user.updated"){
