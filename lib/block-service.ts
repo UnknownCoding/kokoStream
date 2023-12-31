@@ -80,7 +80,6 @@ export const unblockUser = async (id:string) => {
             }
         }
     })
-    console.log(existingBlock)
     if(!existingBlock){
         throw new Error("user is already unblocked")
     }
