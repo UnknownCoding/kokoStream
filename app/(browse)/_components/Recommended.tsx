@@ -1,11 +1,11 @@
 "use client"
 import { useSidebar } from '@/store/use-sidebar'
-import { users } from '@prisma/client'
+import { stream, users } from '@prisma/client'
 import React from 'react'
 import UserItem, { UserItemSkeleton } from './UserItem'
 
 interface RecommendedProps{
-    data:users[]
+    data:(users  & {streams: {isLive:boolean} | null})[]
 }
 
 const Recommended = ({data}:RecommendedProps) => {
@@ -23,7 +23,7 @@ const Recommended = ({data}:RecommendedProps) => {
             )}
             <ul className='space-y-2 px-2 '>
                 {data?.map((user)=>(
-                    <UserItem key={user.id} imageUrl={user.imageUrl} isLive={true} username={user.username}/> 
+                    <UserItem key={user.id} imageUrl={user.imageUrl} isLive={user.streams?.isLive} username={user.username}/> 
                 ))}
             </ul>
         </div>
