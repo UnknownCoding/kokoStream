@@ -24,7 +24,7 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
     const connectionState = useConnectionState();
     const participant = useRemoteParticipant(hostIdentity)
     const isOnline = participant && connectionState === ConnectionState.Connected   
-    const isHidden = !isChatDelayed  || !isOnline
+    const isHidden = !isOnline
     const [value,setValue] = useState("")
     const {chatMessages,send} = useChat()
     useEffect(()=>{
