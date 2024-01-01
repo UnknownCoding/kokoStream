@@ -6,6 +6,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import { useMediaQuery } from 'usehooks-ts'
 import ChatHeader from './ChatHeader'
 import ChatForm from './ChatForm'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ChatProps{
     viewerName:string
@@ -25,7 +26,7 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
     const isOnline = participant && connectionState === ConnectionState.Connected   
     const isHidden = !isChatDelayed  || !isOnline
     const [value,setValue] = useState("")
-    const {chatMessages,isSending,send} = useChat()
+    const {chatMessages,send} = useChat()
     useEffect(()=>{
         if(matches){
             onCollapse()
@@ -45,7 +46,7 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
             <ChatHeader/>
             {variant === ChatVariant.COMMUNITY && (
                 <>
-                    <ChatForm/>
+                    <ChatForm onSubmit={onSubmit} isFollowing={isFollowing} onChange={onChange} value={value} isHidden={isHidden} isDelayed={isChatDelayed} isFollowersOnly={isChatFollowersOnly} />
                 </>
             )}
             {variant === ChatVariant.CHAT && (
