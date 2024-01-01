@@ -24,8 +24,8 @@ const ChatForm = ({isDelayed,isFollowersOnly,isFollowing,isHidden,onChange,onSub
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         e.stopPropagation()
-        if(!value || !isDisabled) return 
-        if(isDelayed || !delayedBlock){
+        if(!value || isDisabled)return 
+        if(!delayedBlock){
             setDelayedBlock(true)
             setTimeout(()=>{
                 setDelayedBlock(false)

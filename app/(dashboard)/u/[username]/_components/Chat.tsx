@@ -7,6 +7,7 @@ import { useMediaQuery } from 'usehooks-ts'
 import ChatHeader from './ChatHeader'
 import ChatForm from './ChatForm'
 import { Skeleton } from '@/components/ui/skeleton'
+import ChatList from './ChatList'
 
 interface ChatProps{
     viewerName:string
@@ -35,6 +36,7 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
     const reverseMessages = useMemo(() => chatMessages.sort((a, b) => b.timestamp - a.timestamp),[chatMessages]);
     const onSubmit = () => {
         if(!send)return
+        console.log(value)
         send(value)
         setValue("")
     }
@@ -42,16 +44,18 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
         setValue(value)
     }
     return (
+        
         <div className='flex flex-col bg-background border-l border-b pt-0 min-h-[calc(100vh-80px)]'>
             <ChatHeader/>
             {variant === ChatVariant.COMMUNITY && (
                 <>
-                    <ChatForm onSubmit={onSubmit} isFollowing={isFollowing} onChange={onChange} value={value} isHidden={isHidden} isDelayed={isChatDelayed} isFollowersOnly={isChatFollowersOnly} />
+                    <p>asdadsas</p>
                 </>
             )}
             {variant === ChatVariant.CHAT && (
                 <>
-                    <p>Chat mode activated</p>
+                    <ChatList messages={reverseMessages} isHidden={isHidden} />
+                    <ChatForm onSubmit={onSubmit} isFollowing={isFollowing} onChange={onChange} value={value} isHidden={isHidden} isDelayed={isChatDelayed} isFollowersOnly={isChatFollowersOnly} />
                 </>
             )}
         </div>
