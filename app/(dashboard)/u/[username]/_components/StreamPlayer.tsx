@@ -9,6 +9,7 @@ import { cn } from '@/lib/utils';
 import Chat, { ChatSkeleton } from './Chat';
 import ChatToggle from './ChatToggle';
 import Header, { HeaderSkeleton } from './Header';
+import InfoCard from './InfoCard';
 
 interface StreamPlayerProps{
     user:users & {streams:stream|null}
@@ -36,6 +37,7 @@ const StreamPlayer = ({stream,user,isFollowing}:StreamPlayerProps) => {
                 <div className='space-y-4 col-span-1 lg:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10'>
                     <VidePlayer host={user.username} hostIdentity={user.id}/>
                     <Header hostName={user.username} hostIdentity={user.id} viewerIdentity={identity} imageUrl={user.imageUrl} isFollowing={isFollowing} name={stream.name}/>
+                    <InfoCard  hostIdentity={user.id} viewerIdentity={identity} name={stream.name} thumbnailUrl={stream.thumnailUrl} />
                 </div>
                 {/* /fix the error below not appearing in mobile */}
                 <div className={cn("col-span-1",collapsed && "hidden")}>
