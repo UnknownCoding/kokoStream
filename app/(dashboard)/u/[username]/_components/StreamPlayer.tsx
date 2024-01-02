@@ -8,7 +8,7 @@ import { useChatSidebar } from '@/store/use-chat-sidebar';
 import { cn } from '@/lib/utils';
 import Chat, { ChatSkeleton } from './Chat';
 import ChatToggle from './ChatToggle';
-import { ChatHeaderSkeleton } from './ChatHeader';
+import Header, { HeaderSkeleton } from './Header';
 
 interface StreamPlayerProps{
     user:users & {streams:stream|null}
@@ -35,6 +35,7 @@ const StreamPlayer = ({stream,user,isFollowing}:StreamPlayerProps) => {
             <LiveKitRoom token={viewerToken} serverUrl={process.env.NEXT_PUBLIC_LIVEKIT_WS_URL} className={cn("grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 2xl:grid-cols-6 h-full ",collapsed && "lg:grid-cols-2 2xl:grid-cols-2")}>
                 <div className='space-y-4 col-span-1 lg:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10'>
                     <VidePlayer host={user.username} hostIdentity={user.id}/>
+                    <Header hostName={user.username} hostIdentity={user.id} viewerIdentity={identity} imageUrl={user.imageUrl} isFollowing={isFollowing} name={stream.name}/>
                 </div>
                 {/* /fix the error below not appearing in mobile */}
                 <div className={cn("col-span-1",collapsed && "hidden")}>
@@ -53,7 +54,7 @@ export const StreamPlayerSkeleton = () => {
         <div className='grid grid-cols-1 lg:gap-y-0 lg:grid-cols-3 2xl:grid-cols-6 h-full'>
             <div className="space-y-4 col-span-1 lg:col-span-2 xl:col-span-2 2xl:col-span-5 lg:overflow-y-auto hidden-scrollbar pb-10">
                 <VideoSkeleton/>
-                {/* <ChatHeaderSkeleton/> */}
+                <HeaderSkeleton/>
             </div>
             <div className="col-span-1 bg-background">
                     <ChatSkeleton/>
