@@ -24,6 +24,7 @@ const page = async ({params:{username}}:PageProps) => {
     }
     return (
         // @ts-ignore
+        // fix the error here of types
         <StreamPlayer stream={user.streams} isFollowing user={user}/>
     )
 }

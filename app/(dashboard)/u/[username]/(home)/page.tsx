@@ -14,6 +14,7 @@ const page = async ({params}:PageProps) => {
         throw new Error("unauthorized access")
     }
     return (
+        
         <div className='h-full w-full'>
             <StreamPlayer stream={user.streams} user={user} isFollowing/>
         </div>
