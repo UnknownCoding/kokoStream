@@ -10,9 +10,10 @@ import Chat, { ChatSkeleton } from './Chat';
 import ChatToggle from './ChatToggle';
 import Header, { HeaderSkeleton } from './Header';
 import InfoCard from './InfoCard';
+import AboutCard from './AboutCard';
 
 interface StreamPlayerProps{
-    user:users & {streams:stream|null}
+    user:users & {streams:stream|null,_count:{followedBy:number}}
     stream:stream
     isFollowing:boolean
 }
@@ -38,6 +39,7 @@ const StreamPlayer = ({stream,user,isFollowing}:StreamPlayerProps) => {
                     <VidePlayer host={user.username} hostIdentity={user.id}/>
                     <Header hostName={user.username} hostIdentity={user.id} viewerIdentity={identity} imageUrl={user.imageUrl} isFollowing={isFollowing} name={stream.name}/>
                     <InfoCard  hostIdentity={user.id} viewerIdentity={identity} name={stream.name} thumbnailUrl={stream.thumnailUrl} />
+                    <AboutCard hostName={user.username} hostIdentity={user.id} viewerIdentity={identity} bio={user.bio} followedByCount={user._count.followedBy}/>
                 </div>
                 {/* /fix the error below not appearing in mobile */}
                 <div className={cn("col-span-1",collapsed && "hidden")}>
