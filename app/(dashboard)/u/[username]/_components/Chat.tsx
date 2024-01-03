@@ -37,7 +37,6 @@ const Chat = ({viewerName,hostIdentity,hostName,isChatDelayed,isChatEnabled,isCh
     const reverseMessages = useMemo(() => chatMessages.sort((a, b) => b.timestamp - a.timestamp),[chatMessages]);
     const onSubmit = () => {
         if(!send)return
-        console.log(value)
         send(value)
         setValue("")
     }

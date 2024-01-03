@@ -25,7 +25,11 @@ const ChatForm = ({isDelayed,isFollowersOnly,isFollowing,isHidden,onChange,onSub
         e.preventDefault()
         e.stopPropagation()
         if(!value || isDisabled)return 
-        if(!delayedBlock){
+        // new added logic
+        if(!isDelayed){
+            onSubmit()
+        }
+        if(isDelayed && !delayedBlock){
             setDelayedBlock(true)
             setTimeout(()=>{
                 setDelayedBlock(false)
@@ -40,7 +44,7 @@ const ChatForm = ({isDelayed,isFollowersOnly,isFollowing,isHidden,onChange,onSub
         <form onSubmit={handleSubmit} className='flex flex-col items-center gap-y-4 p-3'>
             <div className='w-full space-y-2'>
                 <ChatInfo isDelayed={isDelayed} isFollowersOnly={isFollowersOnly}/>
-                <Input onChange={(e)=>onChange(e.target.value)} value={value} disabled={isDisabled} className={cn('border-white/10',isFollowersOnly&&"rounded-t-none border-t-0")} placeholder='send a message'/>
+                <Input onChange={(e)=>onChange(e.target.value)} value={value} disabled={isDisabled} className={cn('border-white/10',isFollowersOnly || isDelayed &&"rounded-t-none border-t-0")} placeholder='send a message'/>
                 <Button type='submit' variant="primary" size="sm" disabled={isDisabled} className='ml-auto'>
                     Chat
                 </Button>
