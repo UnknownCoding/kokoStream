@@ -2,9 +2,10 @@ import { getSelf } from "./auth-service"
 import { db } from "./db"
 
 export const getStreams = async () => {
-    let userId:any
+    let userId
     try {
-        userId = await getSelf()
+        const self = await getSelf()
+        userId = self.id
     } catch (error) {
         userId = null
     }
@@ -16,7 +17,7 @@ export const getStreams = async () => {
                     NOT:{
                         blocking:{
                             some:{
-                                blocked:userId
+                                blockedId:userId
                             }
                         }
                     }
