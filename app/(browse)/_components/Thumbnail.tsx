@@ -26,7 +26,7 @@ const Thumbnail = ({fallback,isLive,src,username}:ThumbnailProps) => {
         )
     }
     return (
-        <div className='group aspect-video relative rounded-md cursor-pointer'>
+        <div className='group h-full w-full aspect-video relative rounded-md cursor-pointer'>
             <div className="rounded-md absolute inset-0 bg-blue-600 opacity-0 group-hover:opacity-100 transition-opacity" />
             {content}
             {isLive && src && (
