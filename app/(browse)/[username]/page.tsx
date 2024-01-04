@@ -15,6 +15,7 @@ interface PageProps{
 const page = async ({params:{username}}:PageProps) => {
     const user = await getUserByUsername(username)
     if(!user){
+        console.log("no userrrrrrrrrrrrrrrrrrrrr")
         notFound()
     }
     const isFollowing = await isFollowingUser(user.id)

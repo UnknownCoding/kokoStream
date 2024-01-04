@@ -13,7 +13,7 @@ export const isBlockedByUser = async (id:string) => {
         if(otherUser.id === self.id){
             return false
         }
-        const existingBlock = db.block.findUnique({
+        const existingBlock = await db.block.findUnique({
             where:{
                 blockedId_blockerId:{
                     blockerId:otherUser.id,
@@ -92,4 +92,22 @@ export const unblockUser = async (id:string) => {
         }
     })
     return unBlock
+}
+
+export const getBlockedUsers = async () => {
+    let blockedUsers = []
+    try {
+        const self = await getSelf()
+        blockedUsers = await db.block.findMany({
+            where:{
+                blockerId:self.id
+            },
+            include:{
+                blocked:true
+            }
+        })
+    } catch (error) {
+        throw new Error("An Unexpected Error Occured")
+    }
+    return blockedUsers
 }
