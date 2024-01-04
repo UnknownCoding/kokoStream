@@ -2,7 +2,7 @@ import { getSelf } from "./auth-service"
 import { db } from "./db"
 
 export const getStreams = async () => {
-    let userId
+    let userId:any
     try {
         userId = await getSelf()
     } catch (error) {
@@ -13,11 +13,10 @@ export const getStreams = async () => {
         streams = await db.stream.findMany({
             where:{
                 user:{
-                    // @ts-expect-error
                     NOT:{
                         blocking:{
                             some:{
-                                blockedId:userId
+                                blocked:userId
                             }
                         }
                     }

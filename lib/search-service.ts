@@ -32,8 +32,13 @@ export const getSearch  = async (term?:string) => {
                     }
                 }]
             },
-            include:{
-                user:true
+            select:{
+                user:true,
+                id:true,
+                name:true,
+                thumnailUrl:true,
+                isLive:true,
+                updatedAt:true
             },
             orderBy:[
                 {isLive:"desc"},

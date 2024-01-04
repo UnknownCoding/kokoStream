@@ -20,7 +20,7 @@ const ResultCard = ({data}:ResultCardProps) => {
             <div className='h-full w-full space-y-4'>
                 <Thumbnail src={data.thumnailUrl} isLive={data.isLive} fallback={data.user.imageUrl} username={data.user.username}/> 
             </div>
-            <div className="flex gap-x-3">
+            <div className="flex gap-x-3 mt-3">
                 <UserAvi username={data.user.username} imageUrl={data.user.imageUrl} isLive={data.isLive}/>
                 <div className="flex flex-col text-sm overflow-hidden">
                     <p className="truncate font-semibold hover:text-blue-500">{data.name}</p>
