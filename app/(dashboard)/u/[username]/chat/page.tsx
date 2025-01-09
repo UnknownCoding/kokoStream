@@ -25,9 +25,3 @@ const page = async () => {
 }
 
 export default page
-
-export const ToggleCardSkeleton = () => {
-    return (
-        <Skeleton className="rounded-xl p-10 w-full" />
-    );
-};

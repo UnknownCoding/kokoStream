@@ -1,6 +1,6 @@
 import React from 'react'
-import { ToggleCardSkeleton } from './page'
 import { Skeleton } from '@/components/ui/skeleton'
+import { ToggleCardSkeleton } from './_components/ToggleCardSkeleton'
 
 const ChatLoading = () => {
     return (
