@@ -34,7 +34,7 @@ const CommunityItem = ({hostName,participantIdentity,participantName,viewerName}
             {isHost && !isSelf && (
                 <Hint label='block'>
                     <Button variant="ghost" onClick={handleBlock} className="h-auto w-auto transition-all ease-in-out opacity-0 hover:opacity-100">
-                        <MinusCircle className='h-4 w-4 text-muted-foreground'/>
+                        <MinusCircle className='h-5 w-5 text-muted-foreground'/>
                     </Button>
                 </Hint>
             )}
