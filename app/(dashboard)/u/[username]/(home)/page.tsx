@@ -2,6 +2,7 @@ import { getUserByUsername } from '@/lib/user-service'
 import { currentUser } from '@clerk/nextjs'
 import React from 'react'
 import StreamPlayer from '../_components/StreamPlayer'
+import { users } from '@prisma/client'
 
 interface PageProps{
     params:{username:string}

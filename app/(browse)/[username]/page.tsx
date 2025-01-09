@@ -2,7 +2,7 @@ import { isFollowingUser } from '@/lib/follow-service'
 import { getUserByUsername } from '@/lib/user-service'
 import { notFound } from 'next/navigation'
 import React from 'react'
-import Actions from './component/actions'
+import Actions from './_components/actions'
 import { isBlockedByUser } from '@/lib/block-service'
 import StreamPlayer from '@/app/(dashboard)/u/[username]/_components/StreamPlayer'
 

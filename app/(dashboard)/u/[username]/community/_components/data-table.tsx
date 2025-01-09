@@ -1,5 +1,4 @@
 "use client"
-// @ts-expect-error
 import {ColumnDef,flexRender,ColumnFiltersState,getFilteredRowModel,getCoreRowModel,useReactTable,getPaginationRowModel,SortingState,getSortedRowModel} from "@tanstack/react-table"
 
 import {

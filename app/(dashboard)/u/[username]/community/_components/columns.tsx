@@ -1,7 +1,6 @@
 "use client"
 import UserAvi from "@/components/UserAvi";
 import { Button } from "@/components/ui/button";
-// @ts-expect-error
 import { ColumnDef } from "@tanstack/react-table"
 import { ArrowUpDown, MoreHorizontal } from "lucide-react"
 import UnblockButton from "./UnblockButton";

@@ -5,8 +5,6 @@ import { blockUser, unblockUser } from "@/lib/block-service"
 import { RoomServiceClient } from "livekit-server-sdk"
 import { revalidatePath } from "next/cache"
 
-
-
 const roomService = new RoomServiceClient(
     process.env.LIVEKIT_API_URL!,
     process.env.LIVEKIT_API_KEY!,
@@ -21,11 +19,12 @@ export const onBlock = async (id:string) => {
         try {
             await roomService.removeParticipant(self.id,id,);
         } catch (error) {
-            
+            console.log("use is a guest");
         }
     }
     
-    revalidatePath(`/u/${self.username}/community`)
+    revalidatePath(`/u/${self.username}/community`);
+    return blockedUser;
 }
 
 export const unBlock = async (id:string) => {
@@ -37,6 +36,6 @@ export const unBlock = async (id:string) => {
         }
         return unblockedUser
     } catch (error) {
-        throw new Error("Internal Erro")
+        throw new Error("Internal Error")
     }
 }

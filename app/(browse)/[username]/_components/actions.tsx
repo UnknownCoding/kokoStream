@@ -28,7 +28,8 @@ const Actions = ({isFollowing,userId}:{isFollowing:boolean,userId:string}) => {
 
     const handleBlock = () => {
         startTransiton(()=>{
-            onBlock(userId).then((data)=>toast.success(`Block the person ${data.blocked.username}`)).catch(()=>toast.error('Something went wrong'))
+            onBlock(userId).then((data)=> toast.success(`Blocked the person ${data?.blocked.username}`))
+            .catch(()=>toast.error('Something went wrong'))
         })
     }
 

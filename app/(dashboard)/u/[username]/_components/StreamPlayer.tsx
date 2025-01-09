@@ -25,9 +25,10 @@ type CustomStream = {
 type CustomUser = {
     id:string
     username:string
-    bio:string
+    bio:string|null
     imageUrl:string
-    streams:CustomStream
+    externalUserId:string
+    streams:CustomStream | null
     _count:{followedBy:number}
 }
 
@@ -80,7 +81,7 @@ export const StreamPlayerSkeleton = () => {
                 <HeaderSkeleton/>
             </div>
             <div className="col-span-1 bg-background">
-                    <ChatSkeleton/>
+                <ChatSkeleton/>
             </div>        
         </div>
     )
