@@ -41,7 +41,7 @@ model follow{
 }
 
 model block{
-  id String @unique @default(uuid())
+  id String @id @default(uuid())
   blockerId String
   blockedId String
   blocker users @relation(name:"Blocking",fields:[blockerId],references: [id],onDelete:Cascade)
@@ -53,7 +53,7 @@ model block{
 
 
 model stream{
-  id String @unique @default(uuid())
+  id String @id @default(uuid())
   name String @db.Text
   thumnailUrl String? @db.Text 
   // ingress streaming software
