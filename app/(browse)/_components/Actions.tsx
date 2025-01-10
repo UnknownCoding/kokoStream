@@ -15,7 +15,6 @@ const Actions = async () => {
                     </Button>
                 </SignInButton>
             )}
-            {/* werid syntax use tiernery instead */}
             {!!user && (
                 <div className='flex items-center gap-x-4 '>
                     <Button size="sm" variant="ghost" className='text-muted-foreground hover:text-primary' asChild>

@@ -32,6 +32,7 @@ export const getRecommended = async () => {
                     }
                 },
                 {
+                    // AND WE ARENT BLOCKING THAT PERSON
                     NOT:{
                         blocking:{
                             some:{

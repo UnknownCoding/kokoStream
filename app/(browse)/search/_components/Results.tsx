@@ -15,7 +15,7 @@ const Results = async ({term}:ResultsProps) => {
             {data.length === 0 && (
                 <p className='text-muted-foreground text-sm'>No results found, Try searching for something else</p>
             )}
-            <div className='flex flex-col gap-y-4'>
+            <div className='flex flex-col gap-y-4 pt-5'>
                 {data.map((da,i)=>(
                     <ResultCard data={da} key={i}/>
                 ))}
